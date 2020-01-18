@@ -1,4 +1,4 @@
-package me.y2o2u2n.demo.repository.order;
+package me.y2o2u2n.demo.repository.order.simplequery;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -8,15 +8,15 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class OrderSimpleV4Repository {
+public class OrderSimpleQueryRepository {
     private final EntityManager em;
 
-    public List<OrderSimpleV4Dto> findAllOrderV4Dtos() {
+    public List<OrderSimpleQueryDto> findOrderDtos() {
         return em.createQuery(
-                "select new me.y2o2u2n.demo.repository.order.OrderSimpleV4Dto(o.id, m.name, o.orderDate, o.status, d.address)" +
+                "select new me.y2o2u2n.demo.repository.order.simplequery.OrderSimpleQueryDto(o.id, m.name, o.orderDate, o.status, d.address)" +
                         " from Order o" +
                         " join o.member m" +
-                        " join o.delivery d", OrderSimpleV4Dto.class)
+                        " join o.delivery d", OrderSimpleQueryDto.class)
                 .getResultList();
     }
 }
