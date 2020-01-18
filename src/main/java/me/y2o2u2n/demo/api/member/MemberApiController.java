@@ -1,6 +1,7 @@
-package me.y2o2u2n.demo.api;
+package me.y2o2u2n.demo.api.member;
 
 import lombok.RequiredArgsConstructor;
+import me.y2o2u2n.demo.api.common.Result;
 import me.y2o2u2n.demo.domain.Member;
 import me.y2o2u2n.demo.service.MemberService;
 import org.springframework.web.bind.annotation.*;

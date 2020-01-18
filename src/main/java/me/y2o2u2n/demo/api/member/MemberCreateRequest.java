@@ -1,4 +1,4 @@
-package me.y2o2u2n.demo.api;
+package me.y2o2u2n.demo.api.member;
 
 import lombok.Data;
 
