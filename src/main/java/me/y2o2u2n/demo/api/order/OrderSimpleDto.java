@@ -8,14 +8,14 @@ import me.y2o2u2n.demo.domain.OrderStatus;
 import java.time.LocalDateTime;
 
 @Data
-class SimpleOrderDto {
+class OrderSimpleDto {
     private Long orderId;
     private String name;
     private LocalDateTime orderDate;
     private OrderStatus orderStatus;
     private Address address;
 
-    SimpleOrderDto(Order order) {
+    OrderSimpleDto(Order order) {
         this.orderId = order.getId();
         this.name = order.getMember().getName();
         this.orderDate = order.getOrderDate();
