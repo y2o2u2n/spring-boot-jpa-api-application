@@ -1,9 +1,9 @@
 package me.y2o2u2n.demo.repository;
 
+import lombok.RequiredArgsConstructor;
 import me.y2o2u2n.demo.domain.Member;
 import me.y2o2u2n.demo.domain.Order;
 import me.y2o2u2n.demo.domain.OrderSearch;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -49,5 +49,13 @@ public class OrderRepository {
         cq.where(cb.and(criteria.toArray(new Predicate[criteria.size()])));
         TypedQuery<Order> query = em.createQuery(cq).setMaxResults(1000); //최대 1000건
         return query.getResultList();
+    }
+
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class)
+                .getResultList();
     }
 }
