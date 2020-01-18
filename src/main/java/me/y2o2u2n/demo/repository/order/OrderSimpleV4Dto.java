@@ -7,14 +7,14 @@ import me.y2o2u2n.demo.domain.OrderStatus;
 import java.time.LocalDateTime;
 
 @Data
-public class OrderV4Dto {
+public class OrderSimpleV4Dto {
     private Long orderId;
     private String name;
     private LocalDateTime orderDate;
     private OrderStatus orderStatus;
     private Address address;
 
-    public OrderV4Dto(
+    public OrderSimpleV4Dto(
             Long orderId,
             String name,
             LocalDateTime orderDate,

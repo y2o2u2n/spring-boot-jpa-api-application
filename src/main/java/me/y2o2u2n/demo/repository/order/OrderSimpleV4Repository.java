@@ -8,15 +8,15 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class OrderV4Repository {
+public class OrderSimpleV4Repository {
     private final EntityManager em;
 
-    public List<OrderV4Dto> findAllOrderV4Dtos() {
+    public List<OrderSimpleV4Dto> findAllOrderV4Dtos() {
         return em.createQuery(
-                "select new me.y2o2u2n.demo.repository.order.OrderV4Dto(o.id, m.name, o.orderDate, o.status, d.address)" +
+                "select new me.y2o2u2n.demo.repository.order.OrderSimpleV4Dto(o.id, m.name, o.orderDate, o.status, d.address)" +
                         " from Order o" +
                         " join o.member m" +
-                        " join o.delivery d", OrderV4Dto.class)
+                        " join o.delivery d", OrderSimpleV4Dto.class)
                 .getResultList();
     }
 }

@@ -3,8 +3,8 @@ package me.y2o2u2n.demo.api;
 import lombok.RequiredArgsConstructor;
 import me.y2o2u2n.demo.domain.Order;
 import me.y2o2u2n.demo.repository.OrderRepository;
-import me.y2o2u2n.demo.repository.order.OrderV4Dto;
-import me.y2o2u2n.demo.repository.order.OrderV4Repository;
+import me.y2o2u2n.demo.repository.order.OrderSimpleV4Dto;
+import me.y2o2u2n.demo.repository.order.OrderSimpleV4Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrderSimpleApiController {
     private final OrderRepository orderRepository;
-    private final OrderV4Repository orderV4Repository;
+    private final OrderSimpleV4Repository orderSimpleV4Repository;
 
     /**
      * V1. 엔티티 직접 노출
@@ -45,10 +45,10 @@ public class OrderSimpleApiController {
      * 참고: fetch join에 대한 자세한 내용은 JPA 기본편 참고(정말 중요함)
      */
     @GetMapping("/api/v3/simple-orders")
-    public List<OrderV3Dto> ordersV3() {
+    public List<OrderSimpleV3Dto> ordersV3() {
         List<Order> orders = orderRepository.findAllWithMemberDelivery();
         return orders.stream()
-                .map(OrderV3Dto::new)
+                .map(OrderSimpleV3Dto::new)
                 .collect(Collectors.toList());
     }
 
@@ -58,7 +58,7 @@ public class OrderSimpleApiController {
      * - select 절에서 원하는 데이터만 선택해서 조회
      */
     @GetMapping("/api/v4/simple-orders")
-    public List<OrderV4Dto> ordersV4() {
-        return orderV4Repository.findAllOrderV4Dtos();
+    public List<OrderSimpleV4Dto> ordersV4() {
+        return orderSimpleV4Repository.findAllOrderV4Dtos();
     }
 }
